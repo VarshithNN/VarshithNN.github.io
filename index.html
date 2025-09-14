@@ -78,6 +78,7 @@
             display: flex; /* Ensures content is centered */
             flex-direction: column;
             justify-content: center;
+            z-index: 1; /* Puts the content behind the button */
         }
         .close-btn {
             position: absolute;
@@ -92,6 +93,7 @@
             transition: 0.3s;
             cursor: pointer;
             border: none;
+            z-index: 2; /* Puts the button in front of everything */
         }
         .modal-body {
             padding: 20px;
