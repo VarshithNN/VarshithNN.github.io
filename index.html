@@ -67,15 +67,19 @@
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(8px);
+            display: flex; /* Centering the modal */
+            justify-content: center;
+            align-items: center;
         }
-
         .modal-content {
             position: relative;
             margin: auto;
             max-width: 900px;
             animation: fadeIn 0.3s;
+            display: flex; /* Ensures content is centered */
+            flex-direction: column;
+            justify-content: center;
         }
-
         .close-btn {
             position: absolute;
             top: 15px;
@@ -86,20 +90,16 @@
             transition: 0.3s;
             cursor: pointer;
         }
-
         .modal-body {
             padding: 20px;
         }
-
         .modal-footer {
             padding: 10px;
             text-align: center;
         }
-
         .carousel-container {
             position: relative;
         }
-
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -112,15 +112,12 @@
             border-radius: 9999px;
             z-index: 10;
         }
-
         .carousel-btn.prev {
             left: 20px;
         }
-
         .carousel-btn.next {
             right: 20px;
         }
-
         .carousel-img {
             width: 100%;
             display: none;
@@ -128,7 +125,6 @@
         .carousel-img.active {
             display: block;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -187,9 +183,9 @@
     <section id="projects" class="py-16 bg-white">
         <div class="container px-4">
             <h2 class="text-3xl font-bold mb-12 text-center text-gray-900" data-aos="fade-up">Selected Projects</h2>
-            <div class="grid place-items-center">
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
                 <!-- Project 1: CIVICconnect -->
-                <div class="project-card block p-6 rounded-xl shadow-lg hover:shadow-xl w-full md:w-1/2" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card block p-6 rounded-xl shadow-lg hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
                     <h3 class="font-bold text-2xl mb-2 text-gray-900">civi<span class="text-blue-500">CC</span>onnect</h3>
                     <p class="text-gray-600 mb-4 text-sm">
                         Built civiCConnect, a digital platform for citizens to report and track civic issues like potholes, drainage, and streetlights.
@@ -202,6 +198,19 @@
                     </div>
                     <button class="w-full px-6 py-2 bg-indigo-600 text-white rounded-full font-semibold hover:bg-indigo-700 transition" onclick="openModal('project1')">View Project</button>
                 </div>
+                 <!-- Project 2: Dynamic Excel Dashboard -->
+                <div class="project-card block p-6 rounded-xl shadow-lg hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-bold text-2xl mb-2 text-gray-900">Dynamic Excel Dashboard</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Developed an interactive dashboard for Ecommerce sales analysis, utilizing filters to provide actionable insights for better decision-making.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-semibold mb-4">
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full">Excel</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full">Data Visualization</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full">Business Analysis</span>
+                    </div>
+                    <button class="w-full px-6 py-2 bg-indigo-600 text-white rounded-full font-semibold hover:bg-indigo-700 transition" onclick="openModal('project2')">View Project</button>
+                </div>
             </div>
         </div>
     </section>
@@ -209,17 +218,17 @@
     <!-- Project Modals -->
     <div id="project1-modal" class="modal">
         <div class="modal-content relative flex flex-col bg-gray-900 rounded-lg shadow-xl m-10">
-            <span class="close-btn" onclick="closeModal('project1')">&times;</span>
+            <button class="close-btn" onclick="closeModal('project1')">&times;</button>
             <div class="modal-body flex-1 p-6">
                 <div class="carousel-container flex-1">
-                    <!-- Updated image URLs with your screenshot names -->
+                    <!-- CIVICconnect Screenshots -->
                     <img class="carousel-img active rounded-lg" src="https://raw.githubusercontent.com/VarshithNN/VarshithNN.github.io/main/civicconnect-1.jpg" alt="CIVICconnect Screenshot 1">
                     <img class="carousel-img rounded-lg" src="https://raw.githubusercontent.com/VarshithNN/VarshithNN.github.io/main/civicconnect-2.jpg" alt="CIVICconnect Screenshot 2">
                     <img class="carousel-img rounded-lg" src="https://raw.githubusercontent.com/VarshithNN/VarshithNN.github.io/main/civicconnect-3.jpg" alt="CIVICconnect Screenshot 3">
                     <img class="carousel-img rounded-lg" src="https://raw.githubusercontent.com/VarshithNN/VarshithNN.github.io/main/civicconnect-4.jpg" alt="CIVICconnect Screenshot 4">
                     <img class="carousel-img rounded-lg" src="https://raw.githubusercontent.com/VarshithNN/VarshithNN.github.io/main/civicconnect-5.jpg" alt="CIVICconnect Screenshot 5">
-                    <span class="carousel-btn prev" onclick="plusSlides(-1, 'project1')">&#10094;</span>
-                    <span class="carousel-btn next" onclick="plusSlides(1, 'project1')">&#10095;</span>
+                    <button class="carousel-btn prev" onclick="plusSlides(-1, 'project1')">&#10094;</button>
+                    <button class="carousel-btn next" onclick="plusSlides(1, 'project1')">&#10095;</button>
                 </div>
             </div>
             <div class="modal-footer p-4">
@@ -228,8 +237,21 @@
         </div>
     </div>
     
-    <!-- Remaining modals removed for brevity -->
-
+    <div id="project2-modal" class="modal">
+        <div class="modal-content relative flex flex-col bg-gray-900 rounded-lg shadow-xl m-10">
+            <button class="close-btn" onclick="closeModal('project2')">&times;</button>
+            <div class="modal-body flex-1 p-6">
+                <div class="carousel-container flex-1">
+                    <!-- Excel Dashboard Screenshot -->
+                    <img class="carousel-img active rounded-lg" src="https://raw.githubusercontent.com/VarshithNN/VarshithNN.github.io/main/Dashboard_Ecommerece-1.png" alt="Excel Dashboard Screenshot 1">
+                </div>
+            </div>
+            <div class="modal-footer p-4">
+                <a id="project2-repo-link" href="https://github.com/VarshithNN" target="_blank" class="px-6 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+    
     <!-- Skills Section -->
     <section id="skills" class="py-16 bg-gray-100">
         <div class="container px-4">
@@ -314,9 +336,10 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         AOS.init({ once: true });
-
+        
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuBtn.addEventListener('click', () => {
@@ -325,12 +348,15 @@
 
         // Store the slide index for each project
         let slideIndex = {
-            'project1': 1
+            'project1': 1,
+            'project2': 1
         };
 
         function showSlides(n, projectId) {
             let i;
             let slides = document.querySelectorAll('#' + projectId + '-modal .carousel-img');
+            if (slides.length === 0) return; // Prevent error if no images
+            
             if (n > slides.length) {
                 slideIndex[projectId] = 1;
             }
@@ -345,7 +371,7 @@
 
         // Modal and carousel functionality
         function openModal(projectId) {
-            document.getElementById(projectId + '-modal').style.display = 'block';
+            document.getElementById(projectId + '-modal').style.display = 'flex'; // Changed to flex
             showSlides(slideIndex[projectId], projectId);
         }
 
