@@ -109,6 +109,10 @@
             color: white;
             font-size: 2.5rem;
             cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            z-index: 10;
         }
 
         .carousel-btn.prev {
@@ -336,7 +340,7 @@
         });
 
         // Store the slide index for each project
-        let currentSlide = {
+        let slideIndex = {
             'project1': 1
         };
 
@@ -344,21 +348,21 @@
             let i;
             let slides = document.querySelectorAll('#' + projectId + '-modal .carousel-img');
             if (n > slides.length) {
-                currentSlide[projectId] = 1;
+                slideIndex[projectId] = 1;
             }
             if (n < 1) {
-                currentSlide[projectId] = slides.length;
+                slideIndex[projectId] = slides.length;
             }
             for (i = 0; i < slides.length; i++) {
                 slides[i].classList.remove('active');
             }
-            slides[currentSlide[projectId] - 1].classList.add('active');
+            slides[slideIndex[projectId] - 1].classList.add('active');
         }
 
         // Modal and carousel functionality
         function openModal(projectId) {
             document.getElementById(projectId + '-modal').style.display = 'block';
-            showSlides(currentSlide[projectId], projectId);
+            showSlides(slideIndex[projectId], projectId);
         }
 
         function closeModal(projectId) {
@@ -366,7 +370,7 @@
         }
 
         function plusSlides(n, projectId) {
-            showSlides(currentSlide[projectId] += n, projectId);
+            showSlides(slideIndex[projectId] += n, projectId);
         }
     </script>
 </body>
